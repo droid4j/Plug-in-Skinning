@@ -1,0 +1,2 @@
+include ':app', ':library', ':skin'
+rootProject.name='Plug-in-Skinning'
