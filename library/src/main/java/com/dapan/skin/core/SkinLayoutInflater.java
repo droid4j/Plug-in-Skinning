@@ -23,6 +23,7 @@ import com.dapan.skin.support.SkinAttrSupport;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -61,13 +62,22 @@ public class SkinLayoutInflater implements LayoutInflaterFactory {
 
             SkinView skinView = new SkinView(view, skinAttrs);
 
-            skinView.skin();
+            // 3. 统一交给 SkinManager 管理
+            manageSkinView(skinView);
 
         }
 
-        // 3. 统一交给 SkinManager 管理
 
         return view;
+    }
+
+    private void manageSkinView(SkinView skinView) {
+        List<SkinView> skinViews = SkinManager.getInstance().getSkinViews(mActivity);
+        if (skinViews == null) {
+            skinViews = new ArrayList<>();
+            SkinManager.getInstance().register(mActivity, skinViews);
+        }
+        skinViews.add(skinView);
     }
 
     private Object mAppCompatViewInflater;
