@@ -15,9 +15,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewParent;
 
+import com.dapan.skin.SkinManager;
+import com.dapan.skin.attr.SkinAttr;
+import com.dapan.skin.attr.SkinView;
+import com.dapan.skin.support.SkinAttrSupport;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -50,6 +56,14 @@ public class SkinLayoutInflater implements LayoutInflaterFactory {
         Log.e(TAG, "onCreateView: " + view + " -> " + name);
 
         // 2. 解析属性，如：src, background, textColor，自定义属性
+        if (view != null) {
+            List<SkinAttr> skinAttrs = SkinAttrSupport.getSkinAttrs(context, attrs);
+
+            SkinView skinView = new SkinView(view, skinAttrs);
+
+            skinView.skin();
+
+        }
 
         // 3. 统一交给 SkinManager 管理
 
