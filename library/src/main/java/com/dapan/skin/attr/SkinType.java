@@ -1,9 +1,16 @@
 package com.dapan.skin.attr;
 
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.dapan.skin.SkinManager;
+import com.dapan.skin.core.SkinResource;
 
 /**
  * Created by per4j
@@ -22,6 +29,13 @@ public abstract class SkinType {
         @Override
         void skin(String resName, View view) {
             Log.e(TAG, "skin: " + resName + ", " + view );
+            SkinResource skinResource = SkinType.getSkinResource();
+            ColorStateList colorStateList = skinResource.getColorByName(resName);
+            if (colorStateList != null) {
+                if (view instanceof TextView) {
+                    ((TextView) view).setTextColor(colorStateList.getDefaultColor());
+                }
+            }
         }
     }
 
@@ -34,7 +48,16 @@ public abstract class SkinType {
 
         @Override
         void skin(String resName, View view) {
-            Log.e(TAG, "skin: " + resName + ", " + view );
+            SkinResource skinResource = SkinType.getSkinResource();
+            Drawable drawable = skinResource.getDrawableByName(resName);
+            if (drawable != null) {
+                view.setBackground(drawable);
+            }
+
+            ColorStateList colorStateList = skinResource.getColorByName(resName);
+            if (colorStateList != null) {
+                view.setBackgroundColor(colorStateList.getDefaultColor());
+            }
         }
     }
 
@@ -47,7 +70,13 @@ public abstract class SkinType {
 
         @Override
         void skin(String resName, View view) {
-            Log.e(TAG, "skin: " + resName + ", " + view );
+            SkinResource skinResource = SkinType.getSkinResource();
+            Drawable drawable = skinResource.getDrawableByName(resName);
+            if (drawable != null) {
+                if (view instanceof ImageView) {
+                    ((ImageView) view).setImageDrawable(drawable);
+                }
+            }
         }
     }
 
@@ -81,5 +110,9 @@ public abstract class SkinType {
         }
 
         return null;
+    }
+
+    private static SkinResource getSkinResource() {
+        return SkinManager.getInstance().getSkinResource();
     }
 }

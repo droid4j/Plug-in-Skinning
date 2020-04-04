@@ -48,4 +48,8 @@ public class SkinManager {
     public void register(Activity activity, List<SkinView> skinViews) {
         skinViewMap.put(activity, skinViews);
     }
+
+    public SkinResource getSkinResource() {
+        return mSkinResource;
+    }
 }

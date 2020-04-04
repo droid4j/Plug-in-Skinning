@@ -3,7 +3,9 @@ package com.dapan.skin.core;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import java.lang.reflect.InvocationTargetException;
@@ -40,5 +42,17 @@ public class SkinResource {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
+    }
+
+    public Drawable getDrawableByName(String resName) {
+        int resId = mSkinResources.getIdentifier(resName, "drawable", mPkgName);
+        Drawable drawable = mSkinResources.getDrawable(resId);
+        return drawable;
+    }
+
+    public ColorStateList getColorByName(String resName) {
+        int resId = mSkinResources.getIdentifier(resName, "color", mPkgName);
+        ColorStateList colorStateList = mSkinResources.getColorStateList(resId);
+        return colorStateList;
     }
 }
