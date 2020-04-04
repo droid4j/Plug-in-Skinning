@@ -24,4 +24,10 @@ public class MainActivity extends AppCompatActivity {
     public void resetSkin(View view) {
         SkinManager.getInstance().restoreSkin();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SkinLayoutInflater.getInstance().unregister();
+    }
 }
