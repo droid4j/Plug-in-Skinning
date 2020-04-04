@@ -8,7 +8,6 @@ import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v4.view.LayoutInflaterFactory;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.widget.VectorEnabledTintResources;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -65,8 +64,9 @@ public class SkinLayoutInflater implements LayoutInflaterFactory {
             // 3. 统一交给 SkinManager 管理
             manageSkinView(skinView);
 
+            // 检查是否需要更新皮肤
+            SkinManager.getInstance().checkSkin(skinView);
         }
-
 
         return view;
     }
