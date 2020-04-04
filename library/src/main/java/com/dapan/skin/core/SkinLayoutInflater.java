@@ -71,6 +71,10 @@ public class SkinLayoutInflater implements LayoutInflaterFactory {
         return view;
     }
 
+    public void unregister() {
+        SkinManager.getInstance().unregister(mActivity);
+    }
+
     private void manageSkinView(SkinView skinView) {
         List<SkinView> skinViews = SkinManager.getInstance().getSkinViews(mActivity);
         if (skinViews == null) {

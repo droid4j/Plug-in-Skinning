@@ -168,6 +168,10 @@ public class SkinManager {
         skinViewMap.put(activity, skinViews);
     }
 
+    public void unregister(Activity activity) {
+        skinViewMap.remove(activity);
+    }
+
     public SkinResource getSkinResource() {
         return mSkinResource;
     }
