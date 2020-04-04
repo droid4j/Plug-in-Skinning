@@ -109,7 +109,7 @@ public abstract class SkinType {
             }
         }
 
-        return null;
+        return skinTypeArrayMap.get(resName);
     }
 
     private static SkinResource getSkinResource() {
