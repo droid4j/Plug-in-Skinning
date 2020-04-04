@@ -10,6 +10,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Second Activity"
+        android:padding="5dp"
+        android:background="@color/skin_test_bg_color"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textColor="@color/skin_test_bg_color"
         android:text="Hello World!" />
 
@@ -26,13 +34,6 @@
         android:text="恢复"
         android:textColor="@color/skin_test_bg_color"
         android:onClick="resetSkin" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="跳转"
-        android:textColor="@color/skin_test_bg_color"
-        android:onClick="jumpTo" />
 
     <ImageView
         android:layout_width="wrap_content"

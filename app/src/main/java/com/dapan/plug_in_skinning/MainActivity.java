@@ -1,5 +1,6 @@
 package com.dapan.plug_in_skinning;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -29,5 +30,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         SkinLayoutInflater.getInstance().unregister();
+    }
+
+    public void jumpTo(View view) {
+        Intent intent = new Intent(this, TestActivity.class);
+        startActivity(intent);
     }
 }
