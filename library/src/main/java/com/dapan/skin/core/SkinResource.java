@@ -45,14 +45,24 @@ public class SkinResource {
     }
 
     public Drawable getDrawableByName(String resName) {
-        int resId = mSkinResources.getIdentifier(resName, "drawable", mPkgName);
-        Drawable drawable = mSkinResources.getDrawable(resId);
-        return drawable;
+        try {
+            int resId = mSkinResources.getIdentifier(resName, "drawable", mPkgName);
+            Drawable drawable = mSkinResources.getDrawable(resId);
+            return drawable;
+        } catch (Exception e) {
+            return null;
+        }
+
     }
 
     public ColorStateList getColorByName(String resName) {
-        int resId = mSkinResources.getIdentifier(resName, "color", mPkgName);
-        ColorStateList colorStateList = mSkinResources.getColorStateList(resId);
-        return colorStateList;
+        try {
+            int resId = mSkinResources.getIdentifier(resName, "color", mPkgName);
+            ColorStateList colorStateList = mSkinResources.getColorStateList(resId);
+            return colorStateList;
+        } catch (Exception e) {
+            return null;
+        }
+
     }
 }

@@ -50,7 +50,6 @@ public class SkinLayoutInflater implements LayoutInflaterFactory {
     @Override
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
         // 拦截View的创建，获取View之后解析
-        Log.e(TAG, "onCreateView: " + name );
         // 1. 创建View
         View view = createView(parent, name, context, attrs);
         Log.e(TAG, "onCreateView: " + view + " -> " + name);
