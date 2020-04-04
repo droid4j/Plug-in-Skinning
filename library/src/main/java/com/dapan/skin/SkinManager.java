@@ -1,9 +1,11 @@
 package com.dapan.skin;
 
 import android.app.Activity;
+import android.content.Context;
 import android.util.ArrayMap;
 
 import com.dapan.skin.attr.SkinView;
+import com.dapan.skin.core.SkinResource;
 
 import java.util.List;
 
@@ -12,7 +14,10 @@ import java.util.List;
  * on 2020-04-04
  */
 public class SkinManager {
+
     private static SkinManager sInstance;
+    private Context mContext;
+    private SkinResource mSkinResource;
 
     private ArrayMap<Activity, List<SkinView>> skinViewMap = new ArrayMap<>();
 
@@ -22,6 +27,12 @@ public class SkinManager {
 
     public static SkinManager getInstance() {
         return sInstance;
+    }
+
+    public void init(Context context) {
+        mContext = context.getApplicationContext();
+
+        mSkinResource = new SkinResource(mContext, "");
     }
 
     public List<SkinView> getSkinViews(Activity activity) {
